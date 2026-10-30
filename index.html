@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -40,6 +41,12 @@
       font-size: 22px;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -48,6 +55,39 @@
 
     nav a:hover {
       color: #93c5fd;
+    }
+
+    /* Bouton de changement de langue */
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 20px;
+      white-space: nowrap;
+    }
+
+    .language-switch button {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      opacity: 0.55;
+      transition: 0.3s;
+      padding: 5px;
+    }
+
+    .language-switch button:hover {
+      opacity: 1;
+      color: #93c5fd;
+    }
+
+    .language-switch button.active {
+      opacity: 1;
+      color: #93c5fd;
+      text-decoration: underline;
+      text-underline-offset: 5px;
     }
 
     .hero {
@@ -76,6 +116,11 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #dbeafe;
     }
 
     section {
@@ -124,14 +169,22 @@
       padding: 22px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       header {
+        justify-content: center;
+      }
+
+      nav {
         justify-content: center;
       }
 
       nav a {
         display: inline-block;
         margin: 5px;
+      }
+
+      .language-switch {
+        margin: 8px;
       }
     }
   </style>
@@ -141,196 +194,453 @@
 
   <header>
     <h2>Mon e-portfolio</h2>
-    
-<nav>
-  <a href="#about">À propos</a>
-  <a href="#skills">Compétences</a>
-  <a href="#projects">Projets</a>
-  <a href="#mobilite">Mobilité internationale</a>
-  <a href="#hobbies">Hobbies</a>
-  <a href="#contact">Contact</a>
-</nav>
+
+    <nav>
+      <a href="#about" data-i18n="navAbout">À propos</a>
+      <a href="#skills" data-i18n="navSkills">Compétences</a>
+      <a href="#projects" data-i18n="navProjects">Projets</a>
+      <a href="#mobilite" data-i18n="navMobility">Mobilité internationale</a>
+      <a href="#hobbies" data-i18n="navHobbies">Hobbies</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+
+      <div class="language-switch" aria-label="Choisir la langue">
+        <button id="btn-fr" class="active"
+                onclick="changeLanguage('fr')"
+                aria-pressed="true">
+          FR
+        </button>
+
+        <span>|</span>
+
+        <button id="btn-en"
+                onclick="changeLanguage('en')"
+                aria-pressed="false">
+          EN
+        </button>
+      </div>
+    </nav>
   </header>
 
+  <!-- ACCUEIL -->
   <div class="hero">
-    <h1>Bonjour, je suis Andreas Mancinelli</h1>
-    <p>
-      Étudiant(e) en Electronique,Energie-électrique,Automatique à l'ENSEEIHT, je développe mes compétences
-      et je présente ici mon parcours, mes projets et mes objectifs.
+    <h1 data-i18n="heroTitle">
+      Bonjour, je suis Andreas Mancinelli
+    </h1>
+
+    <p data-i18n="heroText">
+      Étudiant en Électronique, Énergie électrique et Automatique
+      à l'ENSEEIHT, je développe mes compétences et je présente
+      ici mon parcours, mes projets et mes objectifs.
     </p>
-    <a class="btn" href="#about">Découvrir mon portfolio</a>
+
+    <a class="btn" href="#about" data-i18n="heroButton">
+      Découvrir mon portfolio
+    </a>
   </div>
 
+  <!-- A PROPOS -->
   <section id="about">
-    <h2>À propos de moi</h2>
+    <h2 data-i18n="aboutTitle">À propos de moi</h2>
+
     <div class="card">
-      <p>
+      <p data-i18n="aboutText">
         Je m'appelle Andreas Mancinelli et je suis actuellement
         en 3EA à l'ENSEEIHT.
-        Je suis une personne motivée, persévérente, curieuse et qui souhaite apprendre.
+        Je suis une personne motivée, persévérante, curieuse
+        et qui souhaite apprendre.
         À travers cet e-portfolio, je présente mon parcours,
         mes expériences, mes compétences et mes projets.
       </p>
     </div>
   </section>
 
+  <!-- COMPETENCES -->
   <section id="skills">
-    <h2>Mes compétences</h2>
+    <h2 data-i18n="skillsTitle">Mes compétences</h2>
+
     <div class="skills">
+
       <div class="card">
-        <h3>Compétences techniques</h3>
+        <h3 data-i18n="technicalSkills">Compétences techniques</h3>
+
         <p>
-          <span class="tag">Outils numériques</span>
-          <span class="tag">Informatique</span>
+          <span class="tag" data-i18n="digitalTools">Outils numériques</span>
+          <span class="tag" data-i18n="computerSkills">Informatique</span>
         </p>
       </div>
 
       <div class="card">
-        <h3>Compétences personnelles</h3>
+        <h3 data-i18n="personalSkills">Compétences personnelles</h3>
+
         <p>
-          <span class="tag">Organisation</span>
-          <span class="tag">Gestion du stress</span>
-          <span class="tag">Autonomie</span>
-          <span class="tag">Communication</span>
+          <span class="tag" data-i18n="organization">Organisation</span>
+          <span class="tag" data-i18n="stressManagement">Gestion du stress</span>
+          <span class="tag" data-i18n="autonomy">Autonomie</span>
+          <span class="tag" data-i18n="communication">Communication</span>
         </p>
       </div>
+
     </div>
   </section>
 
+  <!-- PROJETS -->
   <section id="projects">
-    <h2>Mes projets et expériences</h2>
+    <h2 data-i18n="projectsTitle">Mes projets et expériences</h2>
+
     <div class="projects">
+
       <div class="card">
-        <h3>Projet 1</h3>
-        <p>
-          TIPE sur l'étude des performances d'un Moteur Stirling: projet classe préparatoire
+        <h3 data-i18n="project1">Projet 1</h3>
+
+        <p data-i18n="project1Text">
+          TIPE sur l'étude des performances d'un moteur Stirling :
+          projet de classe préparatoire.
         </p>
-        
+
         <img
           src="IMG_1320.PNG"
           alt="Photo de présentation"
+          data-i18n-alt="projectImageAlt"
           width="200"
           style="border-radius: 50%; object-fit: cover;"
         >
-        
-<div class="card">
-  <h3>TIPE : Moteur Stirling</h3>
-  <p>
-    Présentation de mon projet portant sur le moteur Stirling,
-    son fonctionnement et les principes physiques associés.
-  </p>
 
-  <a class="btn"
-     href="presentation-tipe.pptx"
-     download>
-    Télécharger la présentation PowerPoint
-  </a>
-</div>
+        <div class="card">
+          <h3 data-i18n="stirlingTitle">TIPE : Moteur Stirling</h3>
 
+          <p data-i18n="stirlingText">
+            Présentation de mon projet portant sur le moteur Stirling,
+            son fonctionnement et les principes physiques associés.
+          </p>
 
+          <a class="btn"
+             href="presentation-tipe.pptx"
+             download
+             data-i18n="downloadButton">
+            Télécharger la présentation PowerPoint
+          </a>
+        </div>
       </div>
 
       <div class="card">
-        <h3>Projet 2</h3>
-        <p>
-          Hôtel à insecte en bois
+        <h3 data-i18n="project2">Projet 2</h3>
+
+        <p data-i18n="project2Text">
+          Hôtel à insectes en bois.
         </p>
       </div>
-    </div>
-    <div class="card">
-        <h3>Expérience 1</h3>
-        <p>
-          Visionnage du procès King-Kong, participation à la fresque du climat et une fresque aéronautique
+
+      <div class="card">
+        <h3 data-i18n="experience1">Expérience 1</h3>
+
+        <p data-i18n="experience1Text">
+          Visionnage du procès King-Kong, participation à la
+          fresque du climat et à une fresque aéronautique.
         </p>
       </div>
+
     </div>
   </section>
 
-  
-<section id="mobilite">
-  <h2>Mobilité internationale</h2>
-  <div class="card">
-    <h3>Découvrir de nouveaux horizons</h3>
-    <p>
-      La mobilité internationale représente une opportunité
-      de découvrir de nouvelles cultures, d'améliorer mes
-      compétences linguistiques et de développer mon autonomie.
-    </p>
-
-    <h3>Mes objectifs</h3>
-    <p>
-      <span class="tag">Ouverture culturelle</span>
-      <span class="tag">Langues étrangères</span>
-      <span class="tag">Adaptabilité</span>
-      <span class="tag">Autonomie</span>
-    </p>
-
-    <p>
-      Je souhaite pouvoir enrichir mon parcours grâce à des
-      échanges internationaux et à la découverte de nouvelles
-      méthodes de travail.
-    </p>
-  </div>
-</section>
-
-  
-<section id="hobbies">
-  <h2>Mes hobbies</h2>
-
-  <div class="skills">
-    <div class="card">
-      <h3>Sport et activités</h3>
-      <p>
-        Mes activités personnelles me permettent de développer
-        ma persévérance, ma discipline et mon esprit d'équipe.
-      </p>
-    </div>
+  <!-- MOBILITE INTERNATIONALE -->
+  <section id="mobilite">
+    <h2 data-i18n="mobilityTitle">Mobilité internationale</h2>
 
     <div class="card">
-      <h3>Culture et découvertes</h3>
-      <p>
-        J'ai beaucoup voyagé au cours de ma vie, dans plus de 20 pays sur 4 continents différents qui ont développés mon ouverture sur le monde et ma capacité d'adaptation.
+
+      <h3 data-i18n="mobilitySubtitle">
+        Découvrir de nouveaux horizons
+      </h3>
+
+      <p data-i18n="mobilityText">
+        La mobilité internationale représente une opportunité
+        de découvrir de nouvelles cultures, d'améliorer mes
+        compétences linguistiques et de développer mon autonomie.
       </p>
+
+      <h3 data-i18n="objectivesTitle">Mes objectifs</h3>
+
+      <p>
+        <span class="tag" data-i18n="culturalOpenness">Ouverture culturelle</span>
+        <span class="tag" data-i18n="foreignLanguages">Langues étrangères</span>
+        <span class="tag" data-i18n="adaptability">Adaptabilité</span>
+        <span class="tag" data-i18n="autonomy">Autonomie</span>
+      </p>
+
+      <p data-i18n="mobilityText2">
+        Je souhaite pouvoir enrichir mon parcours grâce à des
+        échanges internationaux et à la découverte de nouvelles
+        méthodes de travail.
+      </p>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- HOBBIES -->
+  <section id="hobbies">
+    <h2 data-i18n="hobbiesTitle">Mes hobbies</h2>
 
+    <div class="skills">
 
+      <div class="card">
+        <h3 data-i18n="sportTitle">Sport et activités</h3>
+
+        <p data-i18n="sportText">
+          Mes activités personnelles me permettent de développer
+          ma persévérance, ma discipline et mon esprit d'équipe.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="cultureTitle">Culture et découvertes</h3>
+
+        <p data-i18n="cultureText">
+          J'ai beaucoup voyagé au cours de ma vie, dans plus de
+          20 pays sur 4 continents différents, ce qui a développé
+          mon ouverture sur le monde et ma capacité d'adaptation.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact" class="contact">
-    <h2>Me contacter</h2>
+    <h2 data-i18n="contactTitle">Me contacter</h2>
+
     <div class="card">
+
+      <p data-i18n="contactText">
+        Vous souhaitez échanger avec moi ou en savoir plus
+        sur mon parcours ?
+      </p>
+
       <p>
-        Vous souhaitez échanger avec moi ou en savoir plus sur mon parcours ?
+        <span data-i18n="emailLabel">Email :</span>
+        <a href="mailto:andreas.mancinelli@gmail.com">
+          andreas.mancinelli@gmail.com
+        </a>
       </p>
-      <p>Email : <a href="mailto:TON-EMAIL@EXEMPLE.FR">
-        andreas.mancinelli@gmail.com</a>
-      </p>
+
       <p>
         LinkedIn :
-        
-      <a href="hhttps://www.linkedin.com/feed/"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="display:inline-block;
-                background:#0A66C2;
-                color:white;
-                padding:12px 20px;
-                border-radius:8px;
-                text-decoration:none;
-                font-weight:bold;">
-        Mon profil LinkedIn
-      </a>
-
+        <a href="https://www.linkedin.com/feed/"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="display:inline-block;
+                  background:#0A66C2;
+                  color:white;
+                  padding:12px 20px;
+                  border-radius:8px;
+                  text-decoration:none;
+                  font-weight:bold;"
+           data-i18n="linkedinButton">
+          Mon profil LinkedIn
+        </a>
       </p>
 
-      <p>Formation : [Electronique,Energie-Electrique et Automatique à l'ENSEEIHT]</p>
+      <p data-i18n="education">
+        Formation : Électronique, Énergie électrique et Automatique
+        à l'ENSEEIHT.
+      </p>
+
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© 2026 - Mon e-portfolio | Réalisé avec GitHub Pages</p>
+    <p data-i18n="footer">
+      © 2026 - Mon e-portfolio | Réalisé avec GitHub Pages
+    </p>
   </footer>
+
+  <!-- SYSTEME DE TRADUCTION -->
+  <script>
+
+    const translations = {
+
+      fr: {
+        navAbout: "À propos",
+        navSkills: "Compétences",
+        navProjects: "Projets",
+        navMobility: "Mobilité internationale",
+        navHobbies: "Hobbies",
+        navContact: "Contact",
+
+        heroTitle: "Bonjour, je suis Andreas Mancinelli",
+        heroText: "Étudiant en Électronique, Énergie électrique et Automatique à l'ENSEEIHT, je développe mes compétences et je présente ici mon parcours, mes projets et mes objectifs.",
+        heroButton: "Découvrir mon portfolio",
+
+        aboutTitle: "À propos de moi",
+        aboutText: "Je m'appelle Andreas Mancinelli et je suis actuellement en 3EA à l'ENSEEIHT. Je suis une personne motivée, persévérante, curieuse et qui souhaite apprendre. À travers cet e-portfolio, je présente mon parcours, mes expériences, mes compétences et mes projets.",
+
+        skillsTitle: "Mes compétences",
+        technicalSkills: "Compétences techniques",
+        digitalTools: "Outils numériques",
+        computerSkills: "Informatique",
+        personalSkills: "Compétences personnelles",
+        organization: "Organisation",
+        stressManagement: "Gestion du stress",
+        autonomy: "Autonomie",
+        communication: "Communication",
+
+        projectsTitle: "Mes projets et expériences",
+        project1: "Projet 1",
+        project1Text: "TIPE sur l'étude des performances d'un moteur Stirling : projet de classe préparatoire.",
+        projectImageAlt: "Photo de présentation",
+        stirlingTitle: "TIPE : Moteur Stirling",
+        stirlingText: "Présentation de mon projet portant sur le moteur Stirling, son fonctionnement et les principes physiques associés.",
+        downloadButton: "Télécharger la présentation PowerPoint",
+        project2: "Projet 2",
+        project2Text: "Hôtel à insectes en bois.",
+        experience1: "Expérience 1",
+        experience1Text: "Visionnage du procès King-Kong, participation à la fresque du climat et à une fresque aéronautique.",
+
+        mobilityTitle: "Mobilité internationale",
+        mobilitySubtitle: "Découvrir de nouveaux horizons",
+        mobilityText: "La mobilité internationale représente une opportunité de découvrir de nouvelles cultures, d'améliorer mes compétences linguistiques et de développer mon autonomie.",
+        objectivesTitle: "Mes objectifs",
+        culturalOpenness: "Ouverture culturelle",
+        foreignLanguages: "Langues étrangères",
+        adaptability: "Adaptabilité",
+        mobilityText2: "Je souhaite pouvoir enrichir mon parcours grâce à des échanges internationaux et à la découverte de nouvelles méthodes de travail.",
+
+        hobbiesTitle: "Mes hobbies",
+        sportTitle: "Sport et activités",
+        sportText: "Mes activités personnelles me permettent de développer ma persévérance, ma discipline et mon esprit d'équipe.",
+        cultureTitle: "Culture et découvertes",
+        cultureText: "J'ai beaucoup voyagé au cours de ma vie, dans plus de 20 pays sur 4 continents différents, ce qui a développé mon ouverture sur le monde et ma capacité d'adaptation.",
+
+        contactTitle: "Me contacter",
+        contactText: "Vous souhaitez échanger avec moi ou en savoir plus sur mon parcours ?",
+        emailLabel: "Email :",
+        linkedinButton: "Mon profil LinkedIn",
+        education: "Formation : Électronique, Énergie électrique et Automatique à l'ENSEEIHT.",
+
+        footer: "© 2026 - Mon e-portfolio | Réalisé avec GitHub Pages"
+      },
+
+      en: {
+        navAbout: "About me",
+        navSkills: "Skills",
+        navProjects: "Projects",
+        navMobility: "International mobility",
+        navHobbies: "Hobbies",
+        navContact: "Contact",
+
+        heroTitle: "Hello, I am Andreas Mancinelli",
+        heroText: "I am a student in Electronics, Electrical Energy and Automatic Control at ENSEEIHT. I am developing my skills and presenting my background, projects and goals here.",
+        heroButton: "Explore my portfolio",
+
+        aboutTitle: "About me",
+        aboutText: "My name is Andreas Mancinelli and I am currently studying in the 3EA programme at ENSEEIHT. I am a motivated, persistent and curious person who enjoys learning. Through this e-portfolio, I present my background, experiences, skills and projects.",
+
+        skillsTitle: "My skills",
+        technicalSkills: "Technical skills",
+        digitalTools: "Digital tools",
+        computerSkills: "Computer science",
+        personalSkills: "Personal skills",
+        organization: "Organization",
+        stressManagement: "Stress management",
+        autonomy: "Autonomy",
+        communication: "Communication",
+
+        projectsTitle: "My projects and experiences",
+        project1: "Project 1",
+        project1Text: "Preparatory class research project (TIPE) on the performance analysis of a Stirling engine.",
+        projectImageAlt: "Presentation photo",
+        stirlingTitle: "TIPE: Stirling Engine",
+        stirlingText: "Presentation of my project focusing on the Stirling engine, how it works and the physical principles behind it.",
+        downloadButton: "Download the PowerPoint presentation",
+        project2: "Project 2",
+        project2Text: "Wooden insect hotel.",
+        experience1: "Experience 1",
+        experience1Text: "Attending the King Kong trial, taking part in the Climate Fresk workshop and an aeronautics-themed workshop.",
+
+        mobilityTitle: "International mobility",
+        mobilitySubtitle: "Discovering new horizons",
+        mobilityText: "International mobility is an opportunity to discover new cultures, improve my language skills and develop my independence.",
+        objectivesTitle: "My goals",
+        culturalOpenness: "Cultural awareness",
+        foreignLanguages: "Foreign languages",
+        adaptability: "Adaptability",
+        mobilityText2: "I would like to enrich my academic and personal journey through international exchanges and by discovering new ways of working.",
+
+        hobbiesTitle: "My hobbies",
+        sportTitle: "Sports and activities",
+        sportText: "My personal activities help me develop perseverance, discipline and team spirit.",
+        cultureTitle: "Culture and travel",
+        cultureText: "I have travelled extensively throughout my life, visiting more than 20 countries across 4 different continents. These experiences have broadened my outlook on the world and strengthened my adaptability.",
+
+        contactTitle: "Contact me",
+        contactText: "Would you like to get in touch or learn more about my background?",
+        emailLabel: "Email:",
+        linkedinButton: "My LinkedIn profile",
+        education: "Education: Electronics, Electrical Energy and Automatic Control at ENSEEIHT.",
+
+        footer: "© 2026 - My e-portfolio | Made with GitHub Pages"
+      }
+
+    };
+
+    // Fonction de changement de langue
+    function changeLanguage(lang) {
+
+      if (!translations[lang]) return;
+
+      // Traduction des textes
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+
+        const key = element.getAttribute("data-i18n");
+
+        if (translations[lang][key] !== undefined) {
+          element.textContent = translations[lang][key];
+        }
+
+      });
+
+      // Traduction des attributs alt des images
+      document.querySelectorAll("[data-i18n-alt]").forEach(element => {
+
+        const key = element.getAttribute("data-i18n-alt");
+
+        if (translations[lang][key] !== undefined) {
+          element.alt = translations[lang][key];
+        }
+
+      });
+
+      // Mise à jour de la langue du document
+      document.documentElement.lang = lang;
+
+      // Mise à jour des boutons
+      document.getElementById("btn-fr").classList.toggle("active", lang === "fr");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+
+      document.getElementById("btn-fr").setAttribute("aria-pressed", lang === "fr");
+      document.getElementById("btn-en").setAttribute("aria-pressed", lang === "en");
+
+      // Enregistrement de la langue choisie
+      try {
+        localStorage.setItem("language", lang);
+      } catch (error) {
+        console.warn("Impossible de mémoriser la langue choisie.");
+      }
+
+    }
+
+    // Chargement de la langue enregistrée
+    let savedLanguage = "fr";
+
+    try {
+      savedLanguage = localStorage.getItem("language") || "fr";
+    } catch (error) {
+      savedLanguage = "fr";
+    }
+
+    changeLanguage(savedLanguage);
+
+  </script>
 
 </body>
 </html>
