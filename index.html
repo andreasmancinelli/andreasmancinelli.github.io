@@ -283,6 +283,7 @@
       </p>
       <div style="text-align: center; margin-top: 25px;">
   <a
+    id="cvLink"
     href="CV_Andreas_Mancinelli.pdf"
     target="_blank"
     rel="noopener noreferrer"
@@ -728,6 +729,14 @@
 
       });
 
+      // Mise à jour du lien vers le CV selon la langue
+const cvLink = document.getElementById("cvLink");
+
+if (cvLink) {
+  cvLink.href = lang === "fr"
+    ? "CV_Andreas_Mancinelli.pdf"
+    : "CV_Andreas_Mancinelli_anglais.pdf";
+}
       // Mise à jour de la langue du document
       document.documentElement.lang = lang;
 
