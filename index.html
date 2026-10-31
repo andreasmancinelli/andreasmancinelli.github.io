@@ -18,6 +18,24 @@
     html {
       scroll-behavior: smooth;
     }
+    .video-presentation {
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.video-presentation h2 {
+  margin-bottom: 15px;
+  color: white;
+  font-size: 24px;
+}
+
+.video-presentation iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 12px;
+}
 
     body {
       font-family: Arial, sans-serif;
@@ -237,6 +255,15 @@
       Découvrir mon portfolio
     </a>
   </div>
+  <div class="video-presentation">
+  <h2>Ma vidéo de présentation</h2>
+
+  <iframe
+    src="https://www.youtube.com/embed/GkFwd1bYKms"
+    title="Ma vidéo de présentation"
+    allowfullscreen>
+  </iframe>
+</div>
 
   <!-- A PROPOS -->
   <section id="about">
@@ -419,8 +446,6 @@
     ">
 
     <source src="video saut en longueur.MOV" type="video/quicktime">
-
-    Votre navigateur ne prend pas en charge cette vidéo.
 
   </video>
 
