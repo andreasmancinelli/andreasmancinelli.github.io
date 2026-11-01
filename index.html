@@ -795,47 +795,6 @@
 
 }
 
-
-    
-
-      // Traduction des attributs alt des images
-      document.querySelectorAll("[data-i18n-alt]").forEach(element => {
-
-        const key = element.getAttribute("data-i18n-alt");
-
-        if (translations[lang][key] !== undefined) {
-          element.alt = translations[lang][key];
-        }
-
-      });
-
-      // Mise à jour du lien vers le CV selon la langue
-const cvLink = document.getElementById("cvLink");
-
-if (cvLink) {
-  cvLink.href = lang === "fr"
-    ? "CV_Andreas_Mancinelli.pdf"
-    : "CV_Andreas_Mancinelli_anglais.pdf";
-}
-      // Mise à jour de la langue du document
-      document.documentElement.lang = lang;
-
-      // Mise à jour des boutons
-      document.getElementById("btn-fr").classList.toggle("active", lang === "fr");
-      document.getElementById("btn-en").classList.toggle("active", lang === "en");
-
-      document.getElementById("btn-fr").setAttribute("aria-pressed", lang === "fr");
-      document.getElementById("btn-en").setAttribute("aria-pressed", lang === "en");
-
-      // Enregistrement de la langue choisie
-      try {
-        localStorage.setItem("language", lang);
-      } catch (error) {
-        console.warn("Impossible de mémoriser la langue choisie.");
-      }
-
-    }
-
     // Chargement de la langue enregistrée
     let savedLanguage = "fr";
 
